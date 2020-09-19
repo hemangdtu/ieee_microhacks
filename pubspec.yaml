@@ -1,5 +1,5 @@
 name: ieee_microhacks
-description: A new Flutter project.
+description: Unit Conversion app Flutter project for students attending IEEE MicroHacks Workshop.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
