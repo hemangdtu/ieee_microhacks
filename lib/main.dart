@@ -29,11 +29,13 @@ class _LandingPageState extends State<LandingPage> {
             backgroundColor: Colors.red),
         backgroundColor: Colors.blue,
         body: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(10.0),
           child: Container(
             child: GridView.count(
               crossAxisCount: 2,
-              children: [MenuCard()],
+              children: [
+                MenuCard(),
+              ],
             ),
           ),
         ),
