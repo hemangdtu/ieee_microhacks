@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(ConvertorApp());
-}
+void main() => runApp(ConvertorApp());
 
 class ConvertorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: LandingPage(),
     );
   }
@@ -23,18 +22,50 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text("Option 1"),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text("Option 1"),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text("Option 1"),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text("Option 1"),
+                onTap: () {},
+              )
+            ],
+          ),
+        ),
         appBar: AppBar(
             title: Text('Conversion App'),
             centerTitle: true,
             backgroundColor: Colors.red),
         backgroundColor: Colors.blue,
         body: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.only(top: 0, bottom: 0, left: 10.0, right: 10.0),
           child: Container(
             child: GridView.count(
+              // GridView.builder()
               crossAxisCount: 2,
               children: [
-                MenuCard(),
+                MenuCard(
+                  title: "Hi",
+                  color: Colors.amber,
+                  icon: Icons.accessibility_new,
+                ),
+                MenuCard(
+                  title: "Hi",
+                  color: Colors.red,
+                  icon: Icons.alarm,
+                ),
               ],
             ),
           ),
@@ -45,8 +76,49 @@ class _LandingPageState extends State<LandingPage> {
 }
 
 class MenuCard extends StatelessWidget {
+  MenuCard({this.title, this.icon, this.color});
+
+  final String title;
+  final IconData icon;
+  final MaterialColor color;
+
   @override
   Widget build(BuildContext context) {
-    return Card();
+    return Card(
+      shadowColor: Colors.red,
+      child: InkWell(
+        splashColor: Colors.orange,
+        onTap: () {},
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            // Row(), Stack()
+            children: [
+              Icon(
+                icon,
+                size: 75,
+                color: Colors.pink,
+              ),
+              Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: color,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      elevation: 12.0,
+      margin: EdgeInsets.all(10.0),
+      color: Colors.green,
+      clipBehavior: Clip.hardEdge,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(35),
+      ),
+    );
   }
 }
