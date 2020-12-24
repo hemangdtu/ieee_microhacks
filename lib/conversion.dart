@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieee_microhacks/list_items.dart';
 
 class ConversionClass extends StatefulWidget {
   final String appBarTitle;
@@ -11,8 +12,47 @@ class ConversionClass extends StatefulWidget {
 class _ConversionClassState extends State<ConversionClass> {
   TextEditingController _iptText = TextEditingController();
   double res = 0;
-  int _value = 1;
   int _value2 = 1;
+
+  List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
+  ListItem _selectedItem;
+
+  List<DropdownMenuItem<ListItem>> _dropdownMenuItems2;
+  ListItem _selectedItem2;
+
+  void initState() {
+    super.initState();
+    _dropdownMenuItems = buildDropDownMenuItems(dropdownItems);
+    _dropdownMenuItems2 = buildDropDownMenuItems(dropdownItems2);
+    _selectedItem = _dropdownMenuItems[0].value;
+    _selectedItem2 = _dropdownMenuItems2[0].value;
+  }
+
+  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems(List listItems) {
+    List<DropdownMenuItem<ListItem>> items = List();
+    for (ListItem listItem in listItems) {
+      items.add(
+        DropdownMenuItem(
+          child: Text(listItem.name),
+          value: listItem,
+        ),
+      );
+    }
+    return items;
+  }
+
+  List<DropdownMenuItem<ListItem>> buildDropDownMenuItems2(List listItems) {
+    List<DropdownMenuItem<ListItem>> items = List();
+    for (ListItem listItem in listItems) {
+      items.add(
+        DropdownMenuItem(
+          child: Text(listItem.name),
+          value: listItem,
+        ),
+      );
+    }
+    return items;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,43 +78,24 @@ class _ConversionClassState extends State<ConversionClass> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(7.0),
-                        child: DropdownButton(
-                            value: _value2,
-                            items: [
-                              DropdownMenuItem(
-                                child: Text(
-                                  "First Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 1,
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  "Second Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 2,
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  "Third Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 3,
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  "Fourth Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 4,
-                              )
-                            ],
-                            onChanged: (value2) {
-                              setState(() {
-                                _value2 = value2;
-                              });
-                            }),
+                        child: Container(
+                          padding:
+                              const EdgeInsets.only(left: 10.0, right: 10.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Colors.cyan,
+                              border: Border.all()),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<ListItem>(
+                                value: _selectedItem2,
+                                items: _dropdownMenuItems2,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedItem2 = value;
+                                  });
+                                }),
+                          ),
+                        ),
                       ),
                       Text(
                         "to",
@@ -82,43 +103,24 @@ class _ConversionClassState extends State<ConversionClass> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(7.0),
-                        child: DropdownButton(
-                            value: _value,
-                            items: [
-                              DropdownMenuItem(
-                                child: Text(
-                                  "First Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 1,
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  "Second Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 2,
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  "Third Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 3,
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  "Fourth Item",
-                                  style: TextStyle(fontSize: 20.0),
-                                ),
-                                value: 4,
-                              )
-                            ],
-                            onChanged: (value) {
-                              setState(() {
-                                _value = value;
-                              });
-                            }),
+                        child: Container(
+                          padding:
+                              const EdgeInsets.only(left: 10.0, right: 10.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Colors.cyan,
+                              border: Border.all()),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<ListItem>(
+                                value: _selectedItem,
+                                items: _dropdownMenuItems,
+                                onChanged: (value) {
+                                  setState(() {
+                                    _selectedItem = value;
+                                  });
+                                }),
+                          ),
+                        ),
                       )
                     ],
                   ),
