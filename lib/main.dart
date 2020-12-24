@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieee_microhacks/conversion.dart';
 
 void main() => runApp(ConvertorApp());
 
@@ -57,13 +58,13 @@ class _LandingPageState extends State<LandingPage> {
               crossAxisCount: 2,
               children: [
                 MenuCard(
-                  title: "Hi",
+                  title: "Length",
                   color: Colors.amber,
                   icon: Icons.accessibility_new,
                 ),
                 MenuCard(
-                  title: "Hi",
-                  color: Colors.red,
+                  title: "Mass",
+                  color: Colors.amber,
                   icon: Icons.alarm,
                 ),
               ],
@@ -88,7 +89,15 @@ class MenuCard extends StatelessWidget {
       shadowColor: Colors.red,
       child: InkWell(
         splashColor: Colors.orange,
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ConversionClass(
+                      appBarTitle: title,
+                    )),
+          );
+        },
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -97,13 +106,13 @@ class MenuCard extends StatelessWidget {
               Icon(
                 icon,
                 size: 75,
-                color: Colors.pink,
+                color: Colors.white,
               ),
               Center(
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 25,
                     color: color,
                   ),
                 ),
