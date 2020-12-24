@@ -22,8 +22,13 @@ class _ConversionClassState extends State<ConversionClass> {
 
   void initState() {
     super.initState();
-    _dropdownMenuItems = buildDropDownMenuItems(dropdownItems);
-    _dropdownMenuItems2 = buildDropDownMenuItems(dropdownItems2);
+    if (widget.appBarTitle == "Length") {
+      _dropdownMenuItems = buildDropDownMenuItems(lengthDropdownItems1);
+      _dropdownMenuItems2 = buildDropDownMenuItems(lengthDropdownItems2);
+    } else if (widget.appBarTitle == "Mass") {
+      _dropdownMenuItems = buildDropDownMenuItems(massDropdownItems1);
+      _dropdownMenuItems2 = buildDropDownMenuItems(massDropdownItems2);
+    }
     _selectedItem = _dropdownMenuItems[0].value;
     _selectedItem2 = _dropdownMenuItems2[0].value;
   }
