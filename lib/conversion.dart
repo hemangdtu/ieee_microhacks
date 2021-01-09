@@ -12,7 +12,6 @@ class ConversionClass extends StatefulWidget {
 class _ConversionClassState extends State<ConversionClass> {
   TextEditingController _iptText = TextEditingController();
   double res = 0;
-  int _value2 = 1;
 
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems;
   ListItem _selectedItem;
@@ -38,7 +37,10 @@ class _ConversionClassState extends State<ConversionClass> {
     for (ListItem listItem in listItems) {
       items.add(
         DropdownMenuItem(
-          child: Text(listItem.name),
+          child: Text(
+            listItem.name,
+            style: TextStyle(fontSize: 20.0),
+          ),
           value: listItem,
         ),
       );
@@ -63,6 +65,7 @@ class _ConversionClassState extends State<ConversionClass> {
   Widget build(BuildContext context) {
     return Container(
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: SafeArea(
           child: Scaffold(
             appBar: AppBar(
@@ -78,56 +81,59 @@ class _ConversionClassState extends State<ConversionClass> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(7.0),
-                        child: Container(
-                          padding:
-                              const EdgeInsets.only(left: 10.0, right: 10.0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              color: Colors.cyan,
-                              border: Border.all()),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<ListItem>(
-                                value: _selectedItem2,
-                                items: _dropdownMenuItems2,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _selectedItem2 = value;
-                                  });
-                                }),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Container(
+                            padding:
+                                const EdgeInsets.only(left: 10.0, right: 10.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Colors.cyan,
+                                border: Border.all()),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<ListItem>(
+                                  value: _selectedItem2,
+                                  items: _dropdownMenuItems2,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _selectedItem2 = value;
+                                    });
+                                  }),
+                            ),
                           ),
                         ),
-                      ),
-                      Text(
-                        "to",
-                        style: TextStyle(fontSize: 25.0),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(7.0),
-                        child: Container(
-                          padding:
-                              const EdgeInsets.only(left: 10.0, right: 10.0),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.0),
-                              color: Colors.cyan,
-                              border: Border.all()),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<ListItem>(
-                                value: _selectedItem,
-                                items: _dropdownMenuItems,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _selectedItem = value;
-                                  });
-                                }),
-                          ),
+                        Text(
+                          "to",
+                          style: TextStyle(fontSize: 25.0),
                         ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.all(7.0),
+                          child: Container(
+                            padding:
+                                const EdgeInsets.only(left: 10.0, right: 10.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: Colors.cyan,
+                                border: Border.all()),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<ListItem>(
+                                  value: _selectedItem,
+                                  items: _dropdownMenuItems,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _selectedItem = value;
+                                    });
+                                  }),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
